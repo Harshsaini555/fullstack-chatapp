@@ -14,9 +14,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        sleep 15
+                        sleep 30
                         curl -f http://localhost:5001/health
-                        curl -f http://localhost/ || exit 1
+                        curl -f http://localhost/8081 || exit 1
                     '''
                 }
             }
