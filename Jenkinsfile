@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/Harshsaini555/fullstack-chatapp.git'
-            }
-        }
         stage('Deploy') {
             steps {
                 script {
