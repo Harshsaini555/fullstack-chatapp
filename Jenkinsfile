@@ -8,6 +8,13 @@ pipeline {
                     url: 'https://github.com/Harshsaini555/fullstack-chatapp.git'
             }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    sh 'docker-compose up -d --build'
+                }
+            }
+        }
 
         stage('Test') {
             steps {
@@ -17,14 +24,6 @@ pipeline {
                         curl -f http://localhost:5001/health
                         curl -f http://localhost/ || exit 1
                     '''
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                script {
-                    sh 'docker-compose up -d --build'
                 }
             }
         }
