@@ -32,6 +32,12 @@ pipeline {
                 }
             }
         }
+        stage('Debug K8s') {
+            steps {
+                sh 'kubectl cluster-info'
+                sh 'kubectl get nodes'
+            }
+        }
 
         stage('Deploy to Kubernetes') {
             steps {
