@@ -32,10 +32,14 @@ pipeline {
                 }
             }
         }
-        stage('Debug K8s') {
+        stage('Debug Kubeconfig') {
             steps {
-                sh 'kubectl cluster-info'
-                sh 'kubectl get nodes'
+                sh '''
+                whoami
+                echo "HOME=$HOME"
+                kubectl config current-context
+                kubectl config view
+                '''
             }
         }
 
